@@ -1,0 +1,23 @@
+{
+  "name": "@liliana-sanfilippo/bibtex-name-parser",
+  "version": "0.0.0",
+  "scripts": {
+    "generate:parser": "npx antlr4ts -visitor src/parser/Authors.g4",
+    "generate:lexer": "npx antlr4ts  src/parser/AuthorsLexer.g4",
+    "generate": "npm run generate:lexer && npm run generate:parser",
+    "test": "mocha --require ts-node/register 'test/**/*.test.ts'"
+  },
+  "devDependencies": {
+    "@types/chai": "^5.2.2",
+    "@types/jest": "^30.0.0",
+    "@types/mocha": "^10.0.10",
+    "antlr4ts": "^0.5.0-alpha.4",
+    "antlr4ts-cli": "^0.5.0-alpha.4",
+    "mocha": "^11.7.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "chai": "^5.2.0"
+  }
+}
