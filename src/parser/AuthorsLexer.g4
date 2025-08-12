@@ -2,10 +2,12 @@ lexer grammar AuthorsLexer;
 
 PARTICLE: 'van' | 'von' | 'de' | 'dos' | 'da' | 'das' | 'du' | 'dit' | 'la' | 'der' | 'zu';
 
+WORD    : LETTER LETTER+ ('-' LETTER+)* | 'e' | 'y' | 'and' | 'und' | 'of' ;
+
 INITIAL
     :  LETTER '.'?
     ;
-WORD    : LETTER LETTER+ ('-' LETTER+)* ;
+
 COMMA   : ',' ;
 DASH : '-';
 DOT     : '.' ;
