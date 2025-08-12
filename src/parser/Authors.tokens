@@ -1,0 +1,10 @@
+PARTICLE=1
+INITIAL=2
+WORD=3
+COMMA=4
+DASH=5
+DOT=6
+WS=7
+','=4
+'-'=5
+'.'=6

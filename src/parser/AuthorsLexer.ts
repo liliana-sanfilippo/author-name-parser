@@ -1,0 +1,125 @@
+// Generated from src/parser/AuthorsLexer.g4 by ANTLR 4.9.0-SNAPSHOT
+
+
+import { ATN } from "antlr4ts/atn/ATN";
+import { ATNDeserializer } from "antlr4ts/atn/ATNDeserializer";
+import { CharStream } from "antlr4ts/CharStream";
+import { Lexer } from "antlr4ts/Lexer";
+import { LexerATNSimulator } from "antlr4ts/atn/LexerATNSimulator";
+import { NotNull } from "antlr4ts/Decorators";
+import { Override } from "antlr4ts/Decorators";
+import { RuleContext } from "antlr4ts/RuleContext";
+import { Vocabulary } from "antlr4ts/Vocabulary";
+import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
+
+import * as Utils from "antlr4ts/misc/Utils";
+
+
+export class AuthorsLexer extends Lexer {
+	public static readonly PARTICLE = 1;
+	public static readonly INITIAL = 2;
+	public static readonly WORD = 3;
+	public static readonly COMMA = 4;
+	public static readonly DASH = 5;
+	public static readonly DOT = 6;
+	public static readonly WS = 7;
+
+	// tslint:disable:no-trailing-whitespace
+	public static readonly channelNames: string[] = [
+		"DEFAULT_TOKEN_CHANNEL", "HIDDEN",
+	];
+
+	// tslint:disable:no-trailing-whitespace
+	public static readonly modeNames: string[] = [
+		"DEFAULT_MODE",
+	];
+
+	public static readonly ruleNames: string[] = [
+		"PARTICLE", "INITIAL", "WORD", "COMMA", "DASH", "DOT", "WS", "LETTER",
+	];
+
+	private static readonly _LITERAL_NAMES: Array<string | undefined> = [
+		undefined, undefined, undefined, undefined, "','", "'-'", "'.'",
+	];
+	private static readonly _SYMBOLIC_NAMES: Array<string | undefined> = [
+		undefined, "PARTICLE", "INITIAL", "WORD", "COMMA", "DASH", "DOT", "WS",
+	];
+	public static readonly VOCABULARY: Vocabulary = new VocabularyImpl(AuthorsLexer._LITERAL_NAMES, AuthorsLexer._SYMBOLIC_NAMES, []);
+
+	// @Override
+	// @NotNull
+	public get vocabulary(): Vocabulary {
+		return AuthorsLexer.VOCABULARY;
+	}
+	// tslint:enable:no-trailing-whitespace
+
+
+	constructor(input: CharStream) {
+		super(input);
+		this._interp = new LexerATNSimulator(AuthorsLexer._ATN, this);
+	}
+
+	// @Override
+	public get grammarFileName(): string { return "AuthorsLexer.g4"; }
+
+	// @Override
+	public get ruleNames(): string[] { return AuthorsLexer.ruleNames; }
+
+	// @Override
+	public get serializedATN(): string { return AuthorsLexer._serializedATN; }
+
+	// @Override
+	public get channelNames(): string[] { return AuthorsLexer.channelNames; }
+
+	// @Override
+	public get modeNames(): string[] { return AuthorsLexer.modeNames; }
+
+	public static readonly _serializedATN: string =
+		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x02\tS\b\x01\x04" +
+		"\x02\t\x02\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x04" +
+		"\x07\t\x07\x04\b\t\b\x04\t\t\t\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02" +
+		"\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02" +
+		"\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02" +
+		"\x03\x02\x03\x02\x03\x02\x03\x02\x03\x02\x05\x020\n\x02\x03\x03\x03\x03" +
+		"\x05\x034\n\x03\x03\x04\x03\x04\x06\x048\n\x04\r\x04\x0E\x049\x03\x04" +
+		"\x03\x04\x06\x04>\n\x04\r\x04\x0E\x04?\x07\x04B\n\x04\f\x04\x0E\x04E\v" +
+		"\x04\x03\x05\x03\x05\x03\x06\x03\x06\x03\x07\x03\x07\x03\b\x06\bN\n\b" +
+		"\r\b\x0E\bO\x03\t\x03\t\x02\x02\x02\n\x03\x02\x03\x05\x02\x04\x07\x02" +
+		"\x05\t\x02\x06\v\x02\x07\r\x02\b\x0F\x02\t\x11\x02\x02\x03\x02\x04\x05" +
+		"\x02\v\f\x0F\x0F\"\"\x04\x02C\\c|\x02`\x02\x03\x03\x02\x02\x02\x02\x05" +
+		"\x03\x02\x02\x02\x02\x07\x03\x02\x02\x02\x02\t\x03\x02\x02\x02\x02\v\x03" +
+		"\x02\x02\x02\x02\r\x03\x02\x02\x02\x02\x0F\x03\x02\x02\x02\x03/\x03\x02" +
+		"\x02\x02\x051\x03\x02\x02\x02\x075\x03\x02\x02\x02\tF\x03\x02\x02\x02" +
+		"\vH\x03\x02\x02\x02\rJ\x03\x02\x02\x02\x0FM\x03\x02\x02\x02\x11Q\x03\x02" +
+		"\x02\x02\x13\x14\x07x\x02\x02\x14\x15\x07c\x02\x02\x150\x07p\x02\x02\x16" +
+		"\x17\x07x\x02\x02\x17\x18\x07q\x02\x02\x180\x07p\x02\x02\x19\x1A\x07f" +
+		"\x02\x02\x1A0\x07g\x02\x02\x1B\x1C\x07f\x02\x02\x1C\x1D\x07q\x02\x02\x1D" +
+		"0\x07u\x02\x02\x1E\x1F\x07f\x02\x02\x1F0\x07c\x02\x02 !\x07f\x02\x02!" +
+		"\"\x07c\x02\x02\"0\x07u\x02\x02#$\x07f\x02\x02$0\x07w\x02\x02%&\x07f\x02" +
+		"\x02&\'\x07k\x02\x02\'0\x07v\x02\x02()\x07n\x02\x02)0\x07c\x02\x02*+\x07" +
+		"f\x02\x02+,\x07g\x02\x02,0\x07t\x02\x02-.\x07|\x02\x02.0\x07w\x02\x02" +
+		"/\x13\x03\x02\x02\x02/\x16\x03\x02\x02\x02/\x19\x03\x02\x02\x02/\x1B\x03" +
+		"\x02\x02\x02/\x1E\x03\x02\x02\x02/ \x03\x02\x02\x02/#\x03\x02\x02\x02" +
+		"/%\x03\x02\x02\x02/(\x03\x02\x02\x02/*\x03\x02\x02\x02/-\x03\x02\x02\x02" +
+		"0\x04\x03\x02\x02\x0213\x05\x11\t\x0224\x070\x02\x0232\x03\x02\x02\x02" +
+		"34\x03\x02\x02\x024\x06\x03\x02\x02\x0257\x05\x11\t\x0268\x05\x11\t\x02" +
+		"76\x03\x02\x02\x0289\x03\x02\x02\x0297\x03\x02\x02\x029:\x03\x02\x02\x02" +
+		":C\x03\x02\x02\x02;=\x07/\x02\x02<>\x05\x11\t\x02=<\x03\x02\x02\x02>?" +
+		"\x03\x02\x02\x02?=\x03\x02\x02\x02?@\x03\x02\x02\x02@B\x03\x02\x02\x02" +
+		"A;\x03\x02\x02\x02BE\x03\x02\x02\x02CA\x03\x02\x02\x02CD\x03\x02\x02\x02" +
+		"D\b\x03\x02\x02\x02EC\x03\x02\x02\x02FG\x07.\x02\x02G\n\x03\x02\x02\x02" +
+		"HI\x07/\x02\x02I\f\x03\x02\x02\x02JK\x070\x02\x02K\x0E\x03\x02\x02\x02" +
+		"LN\t\x02\x02\x02ML\x03\x02\x02\x02NO\x03\x02\x02\x02OM\x03\x02\x02\x02" +
+		"OP\x03\x02\x02\x02P\x10\x03\x02\x02\x02QR\t\x03\x02\x02R\x12\x03\x02\x02" +
+		"\x02\t\x02/39?CO\x02";
+	public static __ATN: ATN;
+	public static get _ATN(): ATN {
+		if (!AuthorsLexer.__ATN) {
+			AuthorsLexer.__ATN = new ATNDeserializer().deserialize(Utils.toCharArray(AuthorsLexer._serializedATN));
+		}
+
+		return AuthorsLexer.__ATN;
+	}
+
+}
+
