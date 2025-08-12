@@ -1,6 +1,3 @@
-import { CharStreams, CommonTokenStream } from "antlr4ts";
-import {AuthorsLexer} from "../src/parser/AuthorsLexer";
-import { Authors} from "../src/parser/Authors";
 import {expect} from "chai";
 import {extractFullname, extractLastName, extractPrenames} from "../src/utils";
 
