@@ -14,6 +14,6 @@ onename: (INITIAL|WORD);
 
 lastname: particles? (WORD WS? particles?)*;
 
-particles: (PARTICLE WS?)*;
+particles: (PARTICLE WS)*;
 
 
