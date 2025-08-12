@@ -1,17 +1,13 @@
 import {ANTLRInputStream, CommonTokenStream} from "antlr4ts";
-import {AuthorsLexer} from "../src/base/AuthorsLexer";
-import {Authors} from "../src/base/Authors";
-import {ExtractVisitor} from "../src/core/name_extractor";
+import {AuthorsLexer} from "../src/single_name_parser/base/AuthorsLexer";
+import {Authors} from "../src/single_name_parser/base/Authors";
+import {ExtractVisitor} from "../src/single_name_parser/core/name_extractor";
 
 export function extractFullname(input: string): string {
     const inputStream = new ANTLRInputStream(input);
     const lexer = new AuthorsLexer(inputStream);
     const tokenStream = new CommonTokenStream(lexer);
     const tokens = tokenStream.getTokens();
-    for (const t of tokens) {
-        const tokenName = AuthorsLexer._SYMBOLIC_NAMES[t.type];
-        console.log(`Token: '${t.text}' Type: ${tokenName}`);
-    }
     const parser = new Authors(tokenStream);
     return  parser.fullname().toStringTree(); // 👈 Top-Level-Regel
 }

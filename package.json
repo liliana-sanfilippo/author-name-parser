@@ -1,11 +1,46 @@
 {
-  "name": "@liliana-sanfilippo/bibtex-name-parser",
-  "version": "0.0.0",
+  "name": "@liliana-sanfilippo/author-name-parser",
+  "version": "0.1.0",
+  "homepage": "https://github.com/liliana-sanfilippo/author-name-parser",
+  "description": "A name parser implemented in TypeScript (NextJs).",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "files": [
+    "dist",
+    "index.d.ts",
+    "index.js",
+    "README.md"
+  ],
   "scripts": {
-    "generate:parser": "npx antlr4ts -visitor src/parser/Authors.g4",
-    "generate:lexer": "npx antlr4ts  src/parser/AuthorsLexer.g4",
+    "dev": "webpack --config webpack.config.dev.ts",
+    "generate:parser": "npx antlr4ts -visitor src/single_name_parser/base/Authors.g4",
+    "generate:lexer": "npx antlr4ts  src/single_name_parser/base/AuthorsLexer.g4",
     "generate": "npm run generate:lexer && npm run generate:parser",
-    "test": "node run-mocha.cjs"
+    "test": "npm run dev && mocha --require source-map-support/register dist/dev/author-name-parser-dev.js",
+    "build-commonjs": "LIB_TYPE=commonjs ts-node --esm node_modules/webpack/bin/webpack.js --config webpack.config.prod.ts",
+    "build-umd": "LIB_TYPE=umd ts-node --esm node_modules/webpack/bin/webpack.js --config webpack.config.prod.ts",
+    "build": "npm run build-commonjs && npm run build-umd",
+    "build-debug": "webpack --config webpack.config.prod.ts --mode development --devtool source-map"
+  },
+  "exports": {
+    ".": {
+      "require": "./index.js",
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    }
+  },
+  "keywords": [
+    "bibtex",
+    "parser"
+  ],
+  "author": "Liliana Sanfilippo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liliana-sanfilippo/author-name-parser"
+  },
+  "bugs": {
+    "url": "https://github.com/liliana-sanfilippo/author-name-parser/issues"
   },
   "devDependencies": {
     "@types/chai": "^5.2.2",
@@ -13,9 +48,17 @@
     "@types/mocha": "^10.0.10",
     "antlr4ts": "^0.5.0-alpha.4",
     "antlr4ts-cli": "^0.5.0-alpha.4",
+    "assert": "^2.1.0",
+    "glob": "^11.0.3",
+    "license-webpack-plugin": "^4.0.2",
     "mocha": "^11.7.1",
+    "process": "^0.11.10",
+    "source-map-support": "^0.5.21",
+    "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "webpack": "^5.101.1",
+    "webpack-cli": "^4.10.0"
   },
   "dependencies": {
     "chai": "^4.5.0"
