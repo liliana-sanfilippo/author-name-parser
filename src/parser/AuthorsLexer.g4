@@ -1,4 +1,7 @@
 lexer grammar AuthorsLexer;
+
+PARTICLE: 'van' | 'von' | 'de' | 'dos' | 'da' | 'das' | 'du' | 'dit' | 'la' | 'der' | 'zu';
+
 INITIAL
     :  LETTER '.'?
     ;
