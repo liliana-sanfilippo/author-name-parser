@@ -6,6 +6,7 @@ import { ParseTreeVisitor } from "antlr4ts/tree/ParseTreeVisitor";
 import { FullnameContext } from "./Authors";
 import { PrenameContext } from "./Authors";
 import { OnenameContext } from "./Authors";
+import { InitialsContext } from "./Authors";
 import { LastnameContext } from "./Authors";
 import { ParticlesContext } from "./Authors";
 
@@ -38,6 +39,13 @@ export interface AuthorsVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitOnename?: (ctx: OnenameContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `Authors.initials`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitInitials?: (ctx: InitialsContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by `Authors.lastname`.

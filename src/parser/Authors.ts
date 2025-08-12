@@ -38,11 +38,12 @@ export class Authors extends Parser {
 	public static readonly RULE_fullname = 0;
 	public static readonly RULE_prename = 1;
 	public static readonly RULE_onename = 2;
-	public static readonly RULE_lastname = 3;
-	public static readonly RULE_particles = 4;
+	public static readonly RULE_initials = 3;
+	public static readonly RULE_lastname = 4;
+	public static readonly RULE_particles = 5;
 	// tslint:disable:no-trailing-whitespace
 	public static readonly ruleNames: string[] = [
-		"fullname", "prename", "onename", "lastname", "particles",
+		"fullname", "prename", "onename", "initials", "lastname", "particles",
 	];
 
 	private static readonly _LITERAL_NAMES: Array<string | undefined> = [
@@ -83,28 +84,28 @@ export class Authors extends Parser {
 		this.enterRule(_localctx, 0, Authors.RULE_fullname);
 		let _la: number;
 		try {
-			this.state = 23;
+			this.state = 25;
 			this._errHandler.sync(this);
 			switch ( this.interpreter.adaptivePredict(this._input, 2, this._ctx) ) {
 			case 1:
 				this.enterOuterAlt(_localctx, 1);
 				{
 				{
-				this.state = 10;
+				this.state = 12;
 				this.lastname();
-				this.state = 11;
-				this.match(Authors.COMMA);
 				this.state = 13;
+				this.match(Authors.COMMA);
+				this.state = 15;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 				if (_la === Authors.WS) {
 					{
-					this.state = 12;
+					this.state = 14;
 					this.match(Authors.WS);
 					}
 				}
 
-				this.state = 15;
+				this.state = 17;
 				this.prename();
 				}
 				}
@@ -114,19 +115,19 @@ export class Authors extends Parser {
 				this.enterOuterAlt(_localctx, 2);
 				{
 				{
-				this.state = 17;
-				this.prename();
 				this.state = 19;
+				this.prename();
+				this.state = 21;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 				if (_la === Authors.WS) {
 					{
-					this.state = 18;
+					this.state = 20;
 					this.match(Authors.WS);
 					}
 				}
 
-				this.state = 21;
+				this.state = 23;
 				this.lastname();
 				}
 				}
@@ -151,50 +152,33 @@ export class Authors extends Parser {
 	public prename(): PrenameContext {
 		let _localctx: PrenameContext = new PrenameContext(this._ctx, this.state);
 		this.enterRule(_localctx, 2, Authors.RULE_prename);
-		let _la: number;
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
 			{
-			this.state = 25;
+			this.state = 27;
 			this.onename();
-			this.state = 32;
+			this.state = 34;
 			this._errHandler.sync(this);
 			switch ( this.interpreter.adaptivePredict(this._input, 4, this._ctx) ) {
 			case 1:
 				{
-				this.state = 26;
-				_la = this._input.LA(1);
-				if (!(_la === Authors.DASH || _la === Authors.WS)) {
-				this._errHandler.recoverInline(this);
-				} else {
-					if (this._input.LA(1) === Token.EOF) {
-						this.matchedEOF = true;
-					}
-
-					this._errHandler.reportMatch(this);
-					this.consume();
+				{
+				this.state = 28;
+				this.match(Authors.WS);
 				}
-				this.state = 27;
+				this.state = 29;
 				this.onename();
-				this.state = 30;
+				this.state = 32;
 				this._errHandler.sync(this);
 				switch ( this.interpreter.adaptivePredict(this._input, 3, this._ctx) ) {
 				case 1:
 					{
-					this.state = 28;
-					_la = this._input.LA(1);
-					if (!(_la === Authors.DASH || _la === Authors.WS)) {
-					this._errHandler.recoverInline(this);
-					} else {
-						if (this._input.LA(1) === Token.EOF) {
-							this.matchedEOF = true;
-						}
-
-						this._errHandler.reportMatch(this);
-						this.consume();
+					{
+					this.state = 30;
+					this.match(Authors.WS);
 					}
-					this.state = 29;
+					this.state = 31;
 					this.onename();
 					}
 					break;
@@ -223,22 +207,70 @@ export class Authors extends Parser {
 	public onename(): OnenameContext {
 		let _localctx: OnenameContext = new OnenameContext(this._ctx, this.state);
 		this.enterRule(_localctx, 4, Authors.RULE_onename);
-		let _la: number;
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 34;
-			_la = this._input.LA(1);
-			if (!(_la === Authors.INITIAL || _la === Authors.WORD)) {
-			this._errHandler.recoverInline(this);
-			} else {
-				if (this._input.LA(1) === Token.EOF) {
-					this.matchedEOF = true;
+			this.state = 38;
+			this._errHandler.sync(this);
+			switch (this._input.LA(1)) {
+			case Authors.INITIAL:
+				{
+				this.state = 36;
+				this.initials();
 				}
-
-				this._errHandler.reportMatch(this);
-				this.consume();
+				break;
+			case Authors.WORD:
+				{
+				this.state = 37;
+				this.match(Authors.WORD);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
+			}
+		}
+		catch (re) {
+			if (re instanceof RecognitionException) {
+				_localctx.exception = re;
+				this._errHandler.reportError(this, re);
+				this._errHandler.recover(this, re);
+			} else {
+				throw re;
+			}
+		}
+		finally {
+			this.exitRule();
+		}
+		return _localctx;
+	}
+	// @RuleVersion(0)
+	public initials(): InitialsContext {
+		let _localctx: InitialsContext = new InitialsContext(this._ctx, this.state);
+		this.enterRule(_localctx, 6, Authors.RULE_initials);
+		try {
+			this.state = 44;
+			this._errHandler.sync(this);
+			switch ( this.interpreter.adaptivePredict(this._input, 6, this._ctx) ) {
+			case 1:
+				this.enterOuterAlt(_localctx, 1);
+				{
+				this.state = 40;
+				this.match(Authors.INITIAL);
+				}
+				break;
+
+			case 2:
+				this.enterOuterAlt(_localctx, 2);
+				{
+				this.state = 41;
+				this.match(Authors.INITIAL);
+				this.state = 42;
+				this.match(Authors.DASH);
+				this.state = 43;
+				this.match(Authors.INITIAL);
+				}
+				break;
 			}
 		}
 		catch (re) {
@@ -258,43 +290,43 @@ export class Authors extends Parser {
 	// @RuleVersion(0)
 	public lastname(): LastnameContext {
 		let _localctx: LastnameContext = new LastnameContext(this._ctx, this.state);
-		this.enterRule(_localctx, 6, Authors.RULE_lastname);
+		this.enterRule(_localctx, 8, Authors.RULE_lastname);
 		let _la: number;
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 37;
+			this.state = 47;
 			this._errHandler.sync(this);
 			_la = this._input.LA(1);
 			if (_la === Authors.PARTICLE) {
 				{
-				this.state = 36;
+				this.state = 46;
 				this.particles();
 				}
 			}
 
-			this.state = 39;
+			this.state = 49;
 			this.match(Authors.WORD);
-			this.state = 47;
+			this.state = 57;
 			this._errHandler.sync(this);
 			_la = this._input.LA(1);
 			while (_la === Authors.WS) {
 				{
 				{
-				this.state = 40;
+				this.state = 50;
 				this.match(Authors.WS);
-				this.state = 43;
+				this.state = 53;
 				this._errHandler.sync(this);
 				switch (this._input.LA(1)) {
 				case Authors.PARTICLE:
 					{
-					this.state = 41;
+					this.state = 51;
 					this.particles();
 					}
 					break;
 				case Authors.WORD:
 					{
-					this.state = 42;
+					this.state = 52;
 					this.match(Authors.WORD);
 					}
 					break;
@@ -303,7 +335,7 @@ export class Authors extends Parser {
 				}
 				}
 				}
-				this.state = 49;
+				this.state = 59;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 			}
@@ -326,30 +358,30 @@ export class Authors extends Parser {
 	// @RuleVersion(0)
 	public particles(): ParticlesContext {
 		let _localctx: ParticlesContext = new ParticlesContext(this._ctx, this.state);
-		this.enterRule(_localctx, 8, Authors.RULE_particles);
+		this.enterRule(_localctx, 10, Authors.RULE_particles);
 		try {
 			let _alt: number;
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 50;
+			this.state = 60;
 			this.match(Authors.PARTICLE);
-			this.state = 55;
+			this.state = 65;
 			this._errHandler.sync(this);
-			_alt = this.interpreter.adaptivePredict(this._input, 8, this._ctx);
+			_alt = this.interpreter.adaptivePredict(this._input, 10, this._ctx);
 			while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
 				if (_alt === 1) {
 					{
 					{
-					this.state = 51;
+					this.state = 61;
 					this.match(Authors.WS);
-					this.state = 52;
+					this.state = 62;
 					this.match(Authors.PARTICLE);
 					}
 					}
 				}
-				this.state = 57;
+				this.state = 67;
 				this._errHandler.sync(this);
-				_alt = this.interpreter.adaptivePredict(this._input, 8, this._ctx);
+				_alt = this.interpreter.adaptivePredict(this._input, 10, this._ctx);
 			}
 			}
 		}
@@ -369,33 +401,37 @@ export class Authors extends Parser {
 	}
 
 	public static readonly _serializedATN: string =
-		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03\t=\x04\x02\t" +
-		"\x02\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x03\x02\x03" +
-		"\x02\x03\x02\x05\x02\x10\n\x02\x03\x02\x03\x02\x03\x02\x03\x02\x05\x02" +
-		"\x16\n\x02\x03\x02\x03\x02\x05\x02\x1A\n\x02\x03\x03\x03\x03\x03\x03\x03" +
-		"\x03\x03\x03\x05\x03!\n\x03\x05\x03#\n\x03\x03\x04\x03\x04\x03\x05\x05" +
-		"\x05(\n\x05\x03\x05\x03\x05\x03\x05\x03\x05\x05\x05.\n\x05\x07\x050\n" +
-		"\x05\f\x05\x0E\x053\v\x05\x03\x06\x03\x06\x03\x06\x07\x068\n\x06\f\x06" +
-		"\x0E\x06;\v\x06\x03\x06\x02\x02\x02\x07\x02\x02\x04\x02\x06\x02\b\x02" +
-		"\n\x02\x02\x04\x04\x02\x07\x07\t\t\x03\x02\x04\x05\x02@\x02\x19\x03\x02" +
-		"\x02\x02\x04\x1B\x03\x02\x02\x02\x06$\x03\x02\x02\x02\b\'\x03\x02\x02" +
-		"\x02\n4\x03\x02\x02\x02\f\r\x05\b\x05\x02\r\x0F\x07\x06\x02\x02\x0E\x10" +
-		"\x07\t\x02\x02\x0F\x0E\x03\x02\x02\x02\x0F\x10\x03\x02\x02\x02\x10\x11" +
-		"\x03\x02\x02\x02\x11\x12\x05\x04\x03\x02\x12\x1A\x03\x02\x02\x02\x13\x15" +
-		"\x05\x04\x03\x02\x14\x16\x07\t\x02\x02\x15\x14\x03\x02\x02\x02\x15\x16" +
-		"\x03\x02\x02\x02\x16\x17\x03\x02\x02\x02\x17\x18\x05\b\x05\x02\x18\x1A" +
-		"\x03\x02\x02\x02\x19\f\x03\x02\x02\x02\x19\x13\x03\x02\x02\x02\x1A\x03" +
-		"\x03\x02\x02\x02\x1B\"\x05\x06\x04\x02\x1C\x1D\t\x02\x02\x02\x1D \x05" +
-		"\x06\x04\x02\x1E\x1F\t\x02\x02\x02\x1F!\x05\x06\x04\x02 \x1E\x03\x02\x02" +
-		"\x02 !\x03\x02\x02\x02!#\x03\x02\x02\x02\"\x1C\x03\x02\x02\x02\"#\x03" +
-		"\x02\x02\x02#\x05\x03\x02\x02\x02$%\t\x03\x02\x02%\x07\x03\x02\x02\x02" +
-		"&(\x05\n\x06\x02\'&\x03\x02\x02\x02\'(\x03\x02\x02\x02()\x03\x02\x02\x02" +
-		")1\x07\x05\x02\x02*-\x07\t\x02\x02+.\x05\n\x06\x02,.\x07\x05\x02\x02-" +
-		"+\x03\x02\x02\x02-,\x03\x02\x02\x02.0\x03\x02\x02\x02/*\x03\x02\x02\x02" +
-		"03\x03\x02\x02\x021/\x03\x02\x02\x0212\x03\x02\x02\x022\t\x03\x02\x02" +
-		"\x0231\x03\x02\x02\x0249\x07\x03\x02\x0256\x07\t\x02\x0268\x07\x03\x02" +
-		"\x0275\x03\x02\x02\x028;\x03\x02\x02\x0297\x03\x02\x02\x029:\x03\x02\x02" +
-		"\x02:\v\x03\x02\x02\x02;9\x03\x02\x02\x02\v\x0F\x15\x19 \"\'-19";
+		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03\tG\x04\x02\t" +
+		"\x02\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x04\x07\t" +
+		"\x07\x03\x02\x03\x02\x03\x02\x05\x02\x12\n\x02\x03\x02\x03\x02\x03\x02" +
+		"\x03\x02\x05\x02\x18\n\x02\x03\x02\x03\x02\x05\x02\x1C\n\x02\x03\x03\x03" +
+		"\x03\x03\x03\x03\x03\x03\x03\x05\x03#\n\x03\x05\x03%\n\x03\x03\x04\x03" +
+		"\x04\x05\x04)\n\x04\x03\x05\x03\x05\x03\x05\x03\x05\x05\x05/\n\x05\x03" +
+		"\x06\x05\x062\n\x06\x03\x06\x03\x06\x03\x06\x03\x06\x05\x068\n\x06\x07" +
+		"\x06:\n\x06\f\x06\x0E\x06=\v\x06\x03\x07\x03\x07\x03\x07\x07\x07B\n\x07" +
+		"\f\x07\x0E\x07E\v\x07\x03\x07\x02\x02\x02\b\x02\x02\x04\x02\x06\x02\b" +
+		"\x02\n\x02\f\x02\x02\x02\x02K\x02\x1B\x03\x02\x02\x02\x04\x1D\x03\x02" +
+		"\x02\x02\x06(\x03\x02\x02\x02\b.\x03\x02\x02\x02\n1\x03\x02\x02\x02\f" +
+		">\x03\x02\x02\x02\x0E\x0F\x05\n\x06\x02\x0F\x11\x07\x06\x02\x02\x10\x12" +
+		"\x07\t\x02\x02\x11\x10\x03\x02\x02\x02\x11\x12\x03\x02\x02\x02\x12\x13" +
+		"\x03\x02\x02\x02\x13\x14\x05\x04\x03\x02\x14\x1C\x03\x02\x02\x02\x15\x17" +
+		"\x05\x04\x03\x02\x16\x18\x07\t\x02\x02\x17\x16\x03\x02\x02\x02\x17\x18" +
+		"\x03\x02\x02\x02\x18\x19\x03\x02\x02\x02\x19\x1A\x05\n\x06\x02\x1A\x1C" +
+		"\x03\x02\x02\x02\x1B\x0E\x03\x02\x02\x02\x1B\x15\x03\x02\x02\x02\x1C\x03" +
+		"\x03\x02\x02\x02\x1D$\x05\x06\x04\x02\x1E\x1F\x07\t\x02\x02\x1F\"\x05" +
+		"\x06\x04\x02 !\x07\t\x02\x02!#\x05\x06\x04\x02\" \x03\x02\x02\x02\"#\x03" +
+		"\x02\x02\x02#%\x03\x02\x02\x02$\x1E\x03\x02\x02\x02$%\x03\x02\x02\x02" +
+		"%\x05\x03\x02\x02\x02&)\x05\b\x05\x02\')\x07\x05\x02\x02(&\x03\x02\x02" +
+		"\x02(\'\x03\x02\x02\x02)\x07\x03\x02\x02\x02*/\x07\x04\x02\x02+,\x07\x04" +
+		"\x02\x02,-\x07\x07\x02\x02-/\x07\x04\x02\x02.*\x03\x02\x02\x02.+\x03\x02" +
+		"\x02\x02/\t\x03\x02\x02\x0202\x05\f\x07\x0210\x03\x02\x02\x0212\x03\x02" +
+		"\x02\x0223\x03\x02\x02\x023;\x07\x05\x02\x0247\x07\t\x02\x0258\x05\f\x07" +
+		"\x0268\x07\x05\x02\x0275\x03\x02\x02\x0276\x03\x02\x02\x028:\x03\x02\x02" +
+		"\x0294\x03\x02\x02\x02:=\x03\x02\x02\x02;9\x03\x02\x02\x02;<\x03\x02\x02" +
+		"\x02<\v\x03\x02\x02\x02=;\x03\x02\x02\x02>C\x07\x03\x02\x02?@\x07\t\x02" +
+		"\x02@B\x07\x03\x02\x02A?\x03\x02\x02\x02BE\x03\x02\x02\x02CA\x03\x02\x02" +
+		"\x02CD\x03\x02\x02\x02D\r\x03\x02\x02\x02EC\x03\x02\x02\x02\r\x11\x17" +
+		"\x1B\"$(.17;C";
 	public static __ATN: ATN;
 	public static get _ATN(): ATN {
 		if (!Authors.__ATN) {
@@ -454,15 +490,6 @@ export class PrenameContext extends ParserRuleContext {
 			return this.getRuleContext(i, OnenameContext);
 		}
 	}
-	public DASH(): TerminalNode[];
-	public DASH(i: number): TerminalNode;
-	public DASH(i?: number): TerminalNode | TerminalNode[] {
-		if (i === undefined) {
-			return this.getTokens(Authors.DASH);
-		} else {
-			return this.getToken(Authors.DASH, i);
-		}
-	}
 	public WS(): TerminalNode[];
 	public WS(i: number): TerminalNode;
 	public WS(i?: number): TerminalNode | TerminalNode[] {
@@ -501,7 +528,9 @@ export class PrenameContext extends ParserRuleContext {
 
 
 export class OnenameContext extends ParserRuleContext {
-	public INITIAL(): TerminalNode | undefined { return this.tryGetToken(Authors.INITIAL, 0); }
+	public initials(): InitialsContext | undefined {
+		return this.tryGetRuleContext(0, InitialsContext);
+	}
 	public WORD(): TerminalNode | undefined { return this.tryGetToken(Authors.WORD, 0); }
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
@@ -524,6 +553,45 @@ export class OnenameContext extends ParserRuleContext {
 	public accept<Result>(visitor: AuthorsVisitor<Result>): Result {
 		if (visitor.visitOnename) {
 			return visitor.visitOnename(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
+}
+
+
+export class InitialsContext extends ParserRuleContext {
+	public INITIAL(): TerminalNode[];
+	public INITIAL(i: number): TerminalNode;
+	public INITIAL(i?: number): TerminalNode | TerminalNode[] {
+		if (i === undefined) {
+			return this.getTokens(Authors.INITIAL);
+		} else {
+			return this.getToken(Authors.INITIAL, i);
+		}
+	}
+	public DASH(): TerminalNode | undefined { return this.tryGetToken(Authors.DASH, 0); }
+	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+		super(parent, invokingState);
+	}
+	// @Override
+	public get ruleIndex(): number { return Authors.RULE_initials; }
+	// @Override
+	public enterRule(listener: AuthorsListener): void {
+		if (listener.enterInitials) {
+			listener.enterInitials(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: AuthorsListener): void {
+		if (listener.exitInitials) {
+			listener.exitInitials(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: AuthorsVisitor<Result>): Result {
+		if (visitor.visitInitials) {
+			return visitor.visitInitials(this);
 		} else {
 			return visitor.visitChildren(this);
 		}

@@ -6,6 +6,7 @@ import { ParseTreeListener } from "antlr4ts/tree/ParseTreeListener";
 import { FullnameContext } from "./Authors";
 import { PrenameContext } from "./Authors";
 import { OnenameContext } from "./Authors";
+import { InitialsContext } from "./Authors";
 import { LastnameContext } from "./Authors";
 import { ParticlesContext } from "./Authors";
 
@@ -47,6 +48,17 @@ export interface AuthorsListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitOnename?: (ctx: OnenameContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `Authors.initials`.
+	 * @param ctx the parse tree
+	 */
+	enterInitials?: (ctx: InitialsContext) => void;
+	/**
+	 * Exit a parse tree produced by `Authors.initials`.
+	 * @param ctx the parse tree
+	 */
+	exitInitials?: (ctx: InitialsContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `Authors.lastname`.

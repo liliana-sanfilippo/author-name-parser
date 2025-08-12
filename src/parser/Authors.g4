@@ -8,9 +8,11 @@ fullname
     | (prename  WS? lastname )
     ;
 
-prename: (onename((DASH|WS)onename((DASH|WS)onename)?)?);
+prename: (onename((WS)onename((WS)onename)?)?);
 
-onename: (INITIAL|WORD);
+onename: (initials|WORD);
+
+initials: INITIAL | INITIAL DASH INITIAL;
 
 lastname: particles? WORD  (WS (particles | WORD))*;
 
