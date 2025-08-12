@@ -92,21 +92,19 @@ export class Authors extends Parser {
 				{
 				{
 				this.state = 12;
-				this.lastname();
-				this.state = 13;
-				this.match(Authors.COMMA);
-				this.state = 15;
+				this.prename();
+				this.state = 14;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 				if (_la === Authors.WS) {
 					{
-					this.state = 14;
+					this.state = 13;
 					this.match(Authors.WS);
 					}
 				}
 
-				this.state = 17;
-				this.prename();
+				this.state = 16;
+				this.lastname();
 				}
 				}
 				break;
@@ -115,8 +113,10 @@ export class Authors extends Parser {
 				this.enterOuterAlt(_localctx, 2);
 				{
 				{
+				this.state = 18;
+				this.lastname();
 				this.state = 19;
-				this.prename();
+				this.match(Authors.COMMA);
 				this.state = 21;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
@@ -128,7 +128,7 @@ export class Authors extends Parser {
 				}
 
 				this.state = 23;
-				this.lastname();
+				this.prename();
 				}
 				}
 				break;
@@ -307,7 +307,7 @@ export class Authors extends Parser {
 
 			this.state = 49;
 			this.match(Authors.WORD);
-			this.state = 57;
+			this.state = 54;
 			this._errHandler.sync(this);
 			_la = this._input.LA(1);
 			while (_la === Authors.WS) {
@@ -315,27 +315,11 @@ export class Authors extends Parser {
 				{
 				this.state = 50;
 				this.match(Authors.WS);
-				this.state = 53;
-				this._errHandler.sync(this);
-				switch (this._input.LA(1)) {
-				case Authors.PARTICLE:
-					{
-					this.state = 51;
-					this.particles();
-					}
-					break;
-				case Authors.WORD:
-					{
-					this.state = 52;
-					this.match(Authors.WORD);
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
+				this.state = 51;
+				this.match(Authors.WORD);
 				}
 				}
-				}
-				this.state = 59;
+				this.state = 56;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 			}
@@ -359,29 +343,27 @@ export class Authors extends Parser {
 	public particles(): ParticlesContext {
 		let _localctx: ParticlesContext = new ParticlesContext(this._ctx, this.state);
 		this.enterRule(_localctx, 10, Authors.RULE_particles);
+		let _la: number;
 		try {
-			let _alt: number;
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 60;
+			this.state = 57;
 			this.match(Authors.PARTICLE);
-			this.state = 65;
+			this.state = 58;
+			this.match(Authors.WS);
+			this.state = 62;
 			this._errHandler.sync(this);
-			_alt = this.interpreter.adaptivePredict(this._input, 10, this._ctx);
-			while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
-				if (_alt === 1) {
-					{
-					{
-					this.state = 61;
-					this.match(Authors.WS);
-					this.state = 62;
-					this.match(Authors.PARTICLE);
-					}
-					}
+			_la = this._input.LA(1);
+			while (_la === Authors.PARTICLE) {
+				{
+				{
+				this.state = 59;
+				this.match(Authors.PARTICLE);
 				}
-				this.state = 67;
+				}
+				this.state = 64;
 				this._errHandler.sync(this);
-				_alt = this.interpreter.adaptivePredict(this._input, 10, this._ctx);
+				_la = this._input.LA(1);
 			}
 			}
 		}
@@ -401,37 +383,35 @@ export class Authors extends Parser {
 	}
 
 	public static readonly _serializedATN: string =
-		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03\tG\x04\x02\t" +
+		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03\tD\x04\x02\t" +
 		"\x02\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x04\x07\t" +
-		"\x07\x03\x02\x03\x02\x03\x02\x05\x02\x12\n\x02\x03\x02\x03\x02\x03\x02" +
+		"\x07\x03\x02\x03\x02\x05\x02\x11\n\x02\x03\x02\x03\x02\x03\x02\x03\x02" +
 		"\x03\x02\x05\x02\x18\n\x02\x03\x02\x03\x02\x05\x02\x1C\n\x02\x03\x03\x03" +
 		"\x03\x03\x03\x03\x03\x03\x03\x05\x03#\n\x03\x05\x03%\n\x03\x03\x04\x03" +
 		"\x04\x05\x04)\n\x04\x03\x05\x03\x05\x03\x05\x03\x05\x05\x05/\n\x05\x03" +
-		"\x06\x05\x062\n\x06\x03\x06\x03\x06\x03\x06\x03\x06\x05\x068\n\x06\x07" +
-		"\x06:\n\x06\f\x06\x0E\x06=\v\x06\x03\x07\x03\x07\x03\x07\x07\x07B\n\x07" +
-		"\f\x07\x0E\x07E\v\x07\x03\x07\x02\x02\x02\b\x02\x02\x04\x02\x06\x02\b" +
-		"\x02\n\x02\f\x02\x02\x02\x02K\x02\x1B\x03\x02\x02\x02\x04\x1D\x03\x02" +
-		"\x02\x02\x06(\x03\x02\x02\x02\b.\x03\x02\x02\x02\n1\x03\x02\x02\x02\f" +
-		">\x03\x02\x02\x02\x0E\x0F\x05\n\x06\x02\x0F\x11\x07\x06\x02\x02\x10\x12" +
-		"\x07\t\x02\x02\x11\x10\x03\x02\x02\x02\x11\x12\x03\x02\x02\x02\x12\x13" +
-		"\x03\x02\x02\x02\x13\x14\x05\x04\x03\x02\x14\x1C\x03\x02\x02\x02\x15\x17" +
-		"\x05\x04\x03\x02\x16\x18\x07\t\x02\x02\x17\x16\x03\x02\x02\x02\x17\x18" +
-		"\x03\x02\x02\x02\x18\x19\x03\x02\x02\x02\x19\x1A\x05\n\x06\x02\x1A\x1C" +
-		"\x03\x02\x02\x02\x1B\x0E\x03\x02\x02\x02\x1B\x15\x03\x02\x02\x02\x1C\x03" +
-		"\x03\x02\x02\x02\x1D$\x05\x06\x04\x02\x1E\x1F\x07\t\x02\x02\x1F\"\x05" +
-		"\x06\x04\x02 !\x07\t\x02\x02!#\x05\x06\x04\x02\" \x03\x02\x02\x02\"#\x03" +
-		"\x02\x02\x02#%\x03\x02\x02\x02$\x1E\x03\x02\x02\x02$%\x03\x02\x02\x02" +
-		"%\x05\x03\x02\x02\x02&)\x05\b\x05\x02\')\x07\x05\x02\x02(&\x03\x02\x02" +
-		"\x02(\'\x03\x02\x02\x02)\x07\x03\x02\x02\x02*/\x07\x04\x02\x02+,\x07\x04" +
-		"\x02\x02,-\x07\x07\x02\x02-/\x07\x04\x02\x02.*\x03\x02\x02\x02.+\x03\x02" +
-		"\x02\x02/\t\x03\x02\x02\x0202\x05\f\x07\x0210\x03\x02\x02\x0212\x03\x02" +
-		"\x02\x0223\x03\x02\x02\x023;\x07\x05\x02\x0247\x07\t\x02\x0258\x05\f\x07" +
-		"\x0268\x07\x05\x02\x0275\x03\x02\x02\x0276\x03\x02\x02\x028:\x03\x02\x02" +
-		"\x0294\x03\x02\x02\x02:=\x03\x02\x02\x02;9\x03\x02\x02\x02;<\x03\x02\x02" +
-		"\x02<\v\x03\x02\x02\x02=;\x03\x02\x02\x02>C\x07\x03\x02\x02?@\x07\t\x02" +
-		"\x02@B\x07\x03\x02\x02A?\x03\x02\x02\x02BE\x03\x02\x02\x02CA\x03\x02\x02" +
-		"\x02CD\x03\x02\x02\x02D\r\x03\x02\x02\x02EC\x03\x02\x02\x02\r\x11\x17" +
-		"\x1B\"$(.17;C";
+		"\x06\x05\x062\n\x06\x03\x06\x03\x06\x03\x06\x07\x067\n\x06\f\x06\x0E\x06" +
+		":\v\x06\x03\x07\x03\x07\x03\x07\x07\x07?\n\x07\f\x07\x0E\x07B\v\x07\x03" +
+		"\x07\x02\x02\x02\b\x02\x02\x04\x02\x06\x02\b\x02\n\x02\f\x02\x02\x02\x02" +
+		"G\x02\x1B\x03\x02\x02\x02\x04\x1D\x03\x02\x02\x02\x06(\x03\x02\x02\x02" +
+		"\b.\x03\x02\x02\x02\n1\x03\x02\x02\x02\f;\x03\x02\x02\x02\x0E\x10\x05" +
+		"\x04\x03\x02\x0F\x11\x07\t\x02\x02\x10\x0F\x03\x02\x02\x02\x10\x11\x03" +
+		"\x02\x02\x02\x11\x12\x03\x02\x02\x02\x12\x13\x05\n\x06\x02\x13\x1C\x03" +
+		"\x02\x02\x02\x14\x15\x05\n\x06\x02\x15\x17\x07\x06\x02\x02\x16\x18\x07" +
+		"\t\x02\x02\x17\x16\x03\x02\x02\x02\x17\x18\x03\x02\x02\x02\x18\x19\x03" +
+		"\x02\x02\x02\x19\x1A\x05\x04\x03\x02\x1A\x1C\x03\x02\x02\x02\x1B\x0E\x03" +
+		"\x02\x02\x02\x1B\x14\x03\x02\x02\x02\x1C\x03\x03\x02\x02\x02\x1D$\x05" +
+		"\x06\x04\x02\x1E\x1F\x07\t\x02\x02\x1F\"\x05\x06\x04\x02 !\x07\t\x02\x02" +
+		"!#\x05\x06\x04\x02\" \x03\x02\x02\x02\"#\x03\x02\x02\x02#%\x03\x02\x02" +
+		"\x02$\x1E\x03\x02\x02\x02$%\x03\x02\x02\x02%\x05\x03\x02\x02\x02&)\x05" +
+		"\b\x05\x02\')\x07\x05\x02\x02(&\x03\x02\x02\x02(\'\x03\x02\x02\x02)\x07" +
+		"\x03\x02\x02\x02*/\x07\x04\x02\x02+,\x07\x04\x02\x02,-\x07\x07\x02\x02" +
+		"-/\x07\x04\x02\x02.*\x03\x02\x02\x02.+\x03\x02\x02\x02/\t\x03\x02\x02" +
+		"\x0202\x05\f\x07\x0210\x03\x02\x02\x0212\x03\x02\x02\x0223\x03\x02\x02" +
+		"\x0238\x07\x05\x02\x0245\x07\t\x02\x0257\x07\x05\x02\x0264\x03\x02\x02" +
+		"\x027:\x03\x02\x02\x0286\x03\x02\x02\x0289\x03\x02\x02\x029\v\x03\x02" +
+		"\x02\x02:8\x03\x02\x02\x02;<\x07\x03\x02\x02<@\x07\t\x02\x02=?\x07\x03" +
+		"\x02\x02>=\x03\x02\x02\x02?B\x03\x02\x02\x02@>\x03\x02\x02\x02@A\x03\x02" +
+		"\x02\x02A\r\x03\x02\x02\x02B@\x03\x02\x02\x02\f\x10\x17\x1B\"$(.18@";
 	public static __ATN: ATN;
 	public static get _ATN(): ATN {
 		if (!Authors.__ATN) {
@@ -444,14 +424,14 @@ export class Authors extends Parser {
 }
 
 export class FullnameContext extends ParserRuleContext {
-	public lastname(): LastnameContext | undefined {
-		return this.tryGetRuleContext(0, LastnameContext);
-	}
-	public COMMA(): TerminalNode | undefined { return this.tryGetToken(Authors.COMMA, 0); }
 	public prename(): PrenameContext | undefined {
 		return this.tryGetRuleContext(0, PrenameContext);
 	}
+	public lastname(): LastnameContext | undefined {
+		return this.tryGetRuleContext(0, LastnameContext);
+	}
 	public WS(): TerminalNode | undefined { return this.tryGetToken(Authors.WS, 0); }
+	public COMMA(): TerminalNode | undefined { return this.tryGetToken(Authors.COMMA, 0); }
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
 	}
@@ -609,14 +589,8 @@ export class LastnameContext extends ParserRuleContext {
 			return this.getToken(Authors.WORD, i);
 		}
 	}
-	public particles(): ParticlesContext[];
-	public particles(i: number): ParticlesContext;
-	public particles(i?: number): ParticlesContext | ParticlesContext[] {
-		if (i === undefined) {
-			return this.getRuleContexts(ParticlesContext);
-		} else {
-			return this.getRuleContext(i, ParticlesContext);
-		}
+	public particles(): ParticlesContext | undefined {
+		return this.tryGetRuleContext(0, ParticlesContext);
 	}
 	public WS(): TerminalNode[];
 	public WS(i: number): TerminalNode;
@@ -665,15 +639,7 @@ export class ParticlesContext extends ParserRuleContext {
 			return this.getToken(Authors.PARTICLE, i);
 		}
 	}
-	public WS(): TerminalNode[];
-	public WS(i: number): TerminalNode;
-	public WS(i?: number): TerminalNode | TerminalNode[] {
-		if (i === undefined) {
-			return this.getTokens(Authors.WS);
-		} else {
-			return this.getToken(Authors.WS, i);
-		}
-	}
+	public WS(): TerminalNode { return this.getToken(Authors.WS, 0); }
 	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
 		super(parent, invokingState);
 	}

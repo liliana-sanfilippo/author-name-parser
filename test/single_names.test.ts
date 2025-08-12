@@ -44,6 +44,13 @@ describe('test name parsing', function () {
             expect(extractPrenames(input)).to.equal("J. H.");
         });
     });
+    describe('Jonas-Hans Schmitt', function () {
+        it('should return a correct JSON object', function () {
+            const input = "Jonas-Hans Schmitt";
+            expect(extractLastName(input)).to.equal("Schmitt");
+            expect(extractPrenames(input)).to.equal("Jonas-Hans");
+        });
+    });
     describe('Schmitt, J. H.', function () {
         it('should return a correct JSON object', function () {
             const input = "Schmitt, J. H.";
@@ -62,7 +69,7 @@ describe('test name parsing', function () {
         it('should return a correct JSON object', function () {
             const input = "Anzalone, Andrew V.";
             expect(extractLastName(input)).to.equal("Anzalone");
-            expect(extractPrenames(input)).to.equal("Andrew V");
+            expect(extractPrenames(input)).to.equal("Andrew V.");
         });
     });
     describe('Cadernos de Saúde Pública', function () {
