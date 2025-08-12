@@ -1,7 +1,7 @@
 import {ANTLRInputStream, CommonTokenStream} from "antlr4ts";
-import {AuthorsLexer} from "../src/single_name_parser/base/AuthorsLexer";
-import {Authors} from "../src/single_name_parser/base/Authors";
-import {ExtractVisitor} from "../src/single_name_parser/core/name_extractor";
+import {AuthorsLexer} from "../src/base/AuthorsLexer";
+import {Authors} from "../src/base/Authors";
+import {ExtractVisitor} from "../src/core/name_extractor";
 
 export function extractFullname(input: string): string {
     const inputStream = new ANTLRInputStream(input);
