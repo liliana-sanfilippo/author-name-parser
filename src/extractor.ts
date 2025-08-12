@@ -25,7 +25,7 @@ export class ExtractVisitor implements AuthorsVisitor<string> {
         throw new Error('Method not implemented.');
     }
     visitLastname(ctx: LastnameContext): string {
-        return ctx.WORD().text;
+        return ctx.WORD().toString();
     }
     visitPrename(ctx: PrenameContext): string {
         return ctx.onename().map(w => w.text).join(" ");

@@ -13,6 +13,20 @@ describe('test name parsing', function () {
             expect(extractLastName(input)).to.equal("Schmitt");
             expect(extractPrenames(input)).to.equal("Jonas");
         });
+
+    });
+ describe('Schmitt, J.2', function () {
+        it('should return a correct JSON object', function () {
+            const input = "Schmitt, J.";
+            const stream = CharStreams.fromString(input);
+            const lexer = new AuthorsLexer(stream);
+            const tokens = new CommonTokenStream(lexer);
+            const parser = new Authors(tokens);
+            const tree = parser.fullname();
+            const name = tree.toStringTree(parser);
+            expect(name).to.equal("(name (lastName Schmitt) , (firstAndMiddle (firstName J.)))");
+        });
+
     });
     describe('Schmitt, J.', function () {
         it('should return a correct JSON object', function () {

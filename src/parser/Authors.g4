@@ -12,8 +12,8 @@ prename: (onename((DASH|WS)onename((DASH|WS)onename)?)?);
 
 onename: (INITIAL|WORD);
 
-lastname: particles? (WORD WS? particles?)*;
+lastname: particles? WORD  (WS (particles | WORD))*;
 
-particles: (PARTICLE WS)*;
+particles: PARTICLE (WS PARTICLE)*;
 
 
