@@ -27,7 +27,7 @@ export class ExtractVisitor implements AuthorsVisitor<string> {
     visitLastname(ctx: LastnameContext): string {
         let res = "";
         if (ctx.particles()){
-            res += ctx.particles()?.PARTICLE().toString() + " ";
+            res += ctx.particles()?.text.toString();
         }
         res += ctx.WORD().map(w => w.text).join(" ");
         return res;
