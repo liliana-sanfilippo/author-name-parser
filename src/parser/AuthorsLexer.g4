@@ -11,11 +11,12 @@ PARTICLE: 'van' | 'von' | 'de' | 'dos' | 'da' | 'das' | 'du' | 'dit' | 'la' | 'd
                                                                                                  ;
 
 APOSTROPHE_PARTICLE
-    : ('M’' | 'O’' | 'D’' | 'L’' | 'N’' | 'S’' | 'T’' | 'K’' | 'G’')
+    : ('M' APOSTROPHE | 'O' APOSTROPHE | 'D' APOSTROPHE | 'L' APOSTROPHE | 'N' APOSTROPHE | 'S' APOSTROPHE | 'T' APOSTROPHE | 'K' APOSTROPHE | 'G' APOSTROPHE)
     ;
 
+APOSTROPHE: [\u2019\u0027];
 
-WORD    : LETTER LETTER+ ('-' LETTER+)* | 'e' | 'y' | 'and' | 'und' | 'of';
+WORD    : LETTER LETTER+ ('-' LETTER+)* | 'e' | 'y' | 'and' | 'und' | 'of' | LETTER LETTER+ APOSTROPHE? LETTER+;
 
 FIRSTNAMEPREFIX: 'Abu' | 'Umm' | 'Ibn' | 'Bin' | 'Bint' ;
 
