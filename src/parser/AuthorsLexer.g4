@@ -10,4 +10,4 @@ COMMA   : ',' ;
 DASH : '-';
 DOT     : '.' ;
 WS      : [ \t\r\n]+ ;
-fragment LETTER : [a-zA-Z] ;
+fragment LETTER : [a-zA-Z\u00FA\u00DA] ;

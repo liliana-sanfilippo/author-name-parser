@@ -15,19 +15,6 @@ describe('test name parsing', function () {
         });
 
     });
- describe('Schmitt, J.2', function () {
-        it('should return a correct JSON object', function () {
-            const input = "Schmitt, J.";
-            const stream = CharStreams.fromString(input);
-            const lexer = new AuthorsLexer(stream);
-            const tokens = new CommonTokenStream(lexer);
-            const parser = new Authors(tokens);
-            const tree = parser.fullname();
-            const name = tree.toStringTree(parser);
-            expect(name).to.equal("(name (lastName Schmitt) , (firstAndMiddle (firstName J.)))");
-        });
-
-    });
     describe('Schmitt, J.', function () {
         it('should return a correct JSON object', function () {
             const input = "Schmitt, J.";
@@ -74,49 +61,29 @@ describe('test name parsing', function () {
     describe('Anzalone, Andrew V.', function () {
         it('should return a correct JSON object', function () {
             const input = "Anzalone, Andrew V.";
-            const stream = CharStreams.fromString(input);
-            const lexer = new AuthorsLexer(stream);
-            const tokens = new CommonTokenStream(lexer);
-            const parser = new Authors(tokens);
-            const tree = parser.fullname();
-            const name = tree.toStringTree(parser);
-            expect(name).to.equal("(name (lastName Anzalone) , (firstAndMiddle (firstName Andrew) V))");
+            expect(extractLastName(input)).to.equal("Anzalone");
+            expect(extractPrenames(input)).to.equal("Andrew V");
         });
     });
     describe('Cadernos de Saúde Pública', function () {
         it('should return a correct JSON object', function () {
             const input = "Cadernos de Saúde Pública";
-            const stream = CharStreams.fromString(input);
-            const lexer = new AuthorsLexer(stream);
-            const tokens = new CommonTokenStream(lexer);
-            const parser = new Authors(tokens);
-            const tree = parser.fullname();
-            const name = tree.toStringTree(parser);
-            expect(name).to.equal("(name (lastName de Saúde Pública) , (firstAndMiddle (firstName Cadernos) ))");
+            expect(extractLastName(input)).to.equal("de Saúde Pública");
+            expect(extractPrenames(input)).to.equal("Cadernos");
         });
     });
     describe('De Lisle, R. C.', function () {
         it('should return a correct JSON object', function () {
             const input = "De Lisle, R. C.";
-            const stream = CharStreams.fromString(input);
-            const lexer = new AuthorsLexer(stream);
-            const tokens = new CommonTokenStream(lexer);
-            const parser = new Authors(tokens);
-            const tree = parser.fullname();
-            const name = tree.toStringTree(parser);
-            expect(name).to.equal("(name (lastName De Lisle) , (firstAndMiddle (firstName R)C))");
+            expect(extractLastName(input)).to.equal("De Lisle");
+            expect(extractPrenames(input)).to.equal("R. C.");
         });
     });
     describe('Geller, David E', function () {
         it('should return a correct JSON object', function () {
             const input = " Geller, David E";
-            const stream = CharStreams.fromString(input);
-            const lexer = new AuthorsLexer(stream);
-            const tokens = new CommonTokenStream(lexer);
-            const parser = new Authors(tokens);
-            const tree = parser.fullname();
-            const name = tree.toStringTree(parser);
-            expect(name).to.equal("(name (lastName Geller) , (firstAndMiddle (firstName David)E))");
+            expect(extractLastName(input)).to.equal("Geller");
+            expect(extractPrenames(input)).to.equal("David E");
         });
     });
 
