@@ -1,8 +1,10 @@
-// Generated from src/parser/Authors.g4 by ANTLR 4.9.0-SNAPSHOT
+// Generated from src/base/Authors.g4 by ANTLR 4.9.0-SNAPSHOT
 
 
 import { ParseTreeListener } from "antlr4ts/tree/ParseTreeListener";
 
+import { StartContext } from "./Authors";
+import { AllnamesContext } from "./Authors";
 import { FullnameContext } from "./Authors";
 import { PrenameContext } from "./Authors";
 import { OnenameContext } from "./Authors";
@@ -16,6 +18,28 @@ import { ParticlesContext } from "./Authors";
  * `Authors`.
  */
 export interface AuthorsListener extends ParseTreeListener {
+	/**
+	 * Enter a parse tree produced by `Authors.start`.
+	 * @param ctx the parse tree
+	 */
+	enterStart?: (ctx: StartContext) => void;
+	/**
+	 * Exit a parse tree produced by `Authors.start`.
+	 * @param ctx the parse tree
+	 */
+	exitStart?: (ctx: StartContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `Authors.allnames`.
+	 * @param ctx the parse tree
+	 */
+	enterAllnames?: (ctx: AllnamesContext) => void;
+	/**
+	 * Exit a parse tree produced by `Authors.allnames`.
+	 * @param ctx the parse tree
+	 */
+	exitAllnames?: (ctx: AllnamesContext) => void;
+
 	/**
 	 * Enter a parse tree produced by `Authors.fullname`.
 	 * @param ctx the parse tree

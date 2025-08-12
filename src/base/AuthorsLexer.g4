@@ -1,5 +1,8 @@
 lexer grammar AuthorsLexer;
 
+SEPERATOR: ';' | '&' | 'and' ;
+ETAL: 'et al.';
+
 PARTICLE: 'van' | 'von' | 'de' | 'dos' | 'da' | 'das' | 'du' | 'dit' | 'la' | 'der' | 'zu' | 'al'
                                                                                                  | 'el'
                                                                                                  | 'ibn'
@@ -16,7 +19,7 @@ APOSTROPHE_PARTICLE
 
 APOSTROPHE: [\u2019\u0027];
 
-WORD    : LETTER LETTER+ ('-' LETTER+)* | 'e' | 'y' | 'and' | 'und' | 'of' | LETTER LETTER+ APOSTROPHE? LETTER+;
+WORD    : LETTER LETTER+ ('-' LETTER+)* | 'e' | 'y' | 'und' | 'of' | LETTER LETTER+ APOSTROPHE? LETTER+;
 
 FIRSTNAMEPREFIX: 'Abu' | 'Umm' | 'Ibn' | 'Bin' | 'Bint' ;
 
@@ -25,8 +28,6 @@ LASTNAMEPREFIXE: 'al-'| 'el-'| 'ash-'| 'ad-'| 'as-'| 'az-';
 INITIAL
     :  LETTER '.'?
     ;
-
-
 COMMA   : ',' ;
 DASH : '-';
 DOT     : '.' ;

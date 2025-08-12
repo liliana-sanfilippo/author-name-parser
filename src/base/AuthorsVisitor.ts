@@ -1,8 +1,10 @@
-// Generated from src/parser/Authors.g4 by ANTLR 4.9.0-SNAPSHOT
+// Generated from src/base/Authors.g4 by ANTLR 4.9.0-SNAPSHOT
 
 
 import { ParseTreeVisitor } from "antlr4ts/tree/ParseTreeVisitor";
 
+import { StartContext } from "./Authors";
+import { AllnamesContext } from "./Authors";
 import { FullnameContext } from "./Authors";
 import { PrenameContext } from "./Authors";
 import { OnenameContext } from "./Authors";
@@ -19,6 +21,20 @@ import { ParticlesContext } from "./Authors";
  * operations with no return type.
  */
 export interface AuthorsVisitor<Result> extends ParseTreeVisitor<Result> {
+	/**
+	 * Visit a parse tree produced by `Authors.start`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitStart?: (ctx: StartContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `Authors.allnames`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitAllnames?: (ctx: AllnamesContext) => Result;
+
 	/**
 	 * Visit a parse tree produced by `Authors.fullname`.
 	 * @param ctx the parse tree

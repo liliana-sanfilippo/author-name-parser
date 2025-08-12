@@ -2,6 +2,9 @@ parser grammar Authors;
 
 
 options { tokenVocab=AuthorsLexer; }
+start : allnames EOF ;
+
+allnames: fullname WS?  ((SEPERATOR|COMMA) WS? fullname WS?)* ((SEPERATOR|COMMA) WS? ETAL)?  ;
 
 fullname
     : (prename  WS? lastname ) | (lastname COMMA WS?  prename)
