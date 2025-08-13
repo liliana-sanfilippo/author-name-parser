@@ -57,7 +57,7 @@ export class Authors extends Parser {
 
 	private static readonly _LITERAL_NAMES: Array<string | undefined> = [
 		undefined, undefined, "'et al.'", undefined, undefined, undefined, undefined, 
-		undefined, undefined, undefined, "','", "'-'", "'.'",
+		undefined, undefined, undefined, "','", undefined, "'.'",
 	];
 	private static readonly _SYMBOLIC_NAMES: Array<string | undefined> = [
 		undefined, "SEPERATOR", "ETAL", "PARTICLE", "APOSTROPHE_PARTICLE", "APOSTROPHE", 
