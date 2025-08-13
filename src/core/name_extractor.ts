@@ -1,35 +1,32 @@
-import {LastnameContext, PrenameContext} from "../base/Authors";
+import {ANTLRInputStream, CommonTokenStream} from "antlr4ts";
+import {AuthorsLexer} from "../base/AuthorsLexer";
+import {Authors} from "../base/Authors";
+import {ExtractVisitor} from "./extract_visitor";
+import {FullName} from "./type";
 
-/**
- * Class to extract the first and the last names out of the parse trees made by ANTLR4ts.
- *
- * @author Liliana Sanfilippo
- */
-export class ExtractVisitor {
-
-    /**
-     * Extracting and parsing the full last name(s) including particles.
-     * @param ctx the name parse tree
-     */
-    visitLastname(ctx: LastnameContext): string {
-        let res = "";
-        if (ctx.particles()){
-            res += ctx.particles()?.text.toString();
-        }
-        res += ctx.WORD().map(w => w.text).join(" ");
-        return res;
-    }
-
-    /**
-     * Extracting and parsing the full first and middle name(s).
-     * @param ctx the name parse tree
-     */
-    visitPrename(ctx: PrenameContext): string {
-        return ctx.onename().map(w => w.text).join(" ");
-    }
-
+function createParser(input: string): Authors {
+    const inputStream = new ANTLRInputStream(input);
+    const lexer = new AuthorsLexer(inputStream);
+    const tokenStream = new CommonTokenStream(lexer);
+    return new Authors(tokenStream);
 }
 
+export function extractLastName(input: string): string {
+    const parser = createParser(input)
+    const tree = parser.fullname();
+    const extractor = new ExtractVisitor();
+    return extractor.visitLastname(tree.lastname()!);
+}
 
+export function extractPrenames(input: string): string {
+    const parser = createParser(input)
+    const tree = parser.fullname();
+    const extractor = new ExtractVisitor();
+    return extractor.visitPrename(tree.prename()!);
+}
 
-
+export function extractAllNames(input: string): FullName[] {
+    const parser = createParser(input)
+    const extractor = new ExtractVisitor();
+    return extractor.visitAllnames(parser.allnames()!);
+}

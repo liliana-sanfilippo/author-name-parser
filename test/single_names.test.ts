@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {extractFullname, extractLastName, extractPrenames} from "./utils";
+import {extractLastName, extractPrenames} from "../src/core/name_extractor";
 
 
 
@@ -29,7 +29,6 @@ describe('test name parsing', function () {
     describe('Jonas H. Schmitt', function () {
         it('should return correctly seperated name', function () {
             const input = "Jonas H. Schmitt";
-            console.log(extractFullname(input));
             expect(extractLastName(input)).to.equal("Schmitt");
             expect(extractPrenames(input)).to.equal("Jonas H.");
         });
