@@ -1,6 +1,6 @@
 lexer grammar AuthorsLexer;
 
-SEPERATOR: ';' | '&' | 'and' ;
+SEPERATOR: ';' | '&' | 'and' | ', and' | ',and';
 ETAL: 'et al.';
 
 PARTICLE: 'van' | 'von' | 'de' | 'dos' | 'da' | 'das' | 'du' | 'dit' | 'la' | 'der' | 'zu' | 'al'
@@ -32,4 +32,5 @@ COMMA   : ',' ;
 DASH : '-';
 DOT     : '.' ;
 WS      : [ \t\r\n]+ ;
+
 fragment LETTER : [\p{L}] ;

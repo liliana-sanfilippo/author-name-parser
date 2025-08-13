@@ -19,3 +19,4 @@ initials: INITIAL | INITIAL DASH INITIAL;
 lastname: particles? WORD (WS WORD)*;
 
 particles: PARTICLE WS (PARTICLE WS)* | APOSTROPHE_PARTICLE;
+
