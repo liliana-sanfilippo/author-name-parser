@@ -2,7 +2,7 @@
   "name": "@liliana-sanfilippo/author-name-parser",
   "version": "0.1.0",
   "homepage": "https://github.com/liliana-sanfilippo/author-name-parser",
-  "description": "A name parser implemented in TypeScript (NextJs).",
+  "description": "A name parser implemented in TypeScript (NextJs) to parse names. Intended to be used for Author lists in BibTeX references.",
   "main": "./index.js",
   "types": "./index.d.ts",
   "files": [
