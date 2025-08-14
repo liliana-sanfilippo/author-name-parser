@@ -7,13 +7,12 @@
   },
   "homepage": "https://github.com/liliana-sanfilippo/author-name-parser",
   "description": "A name parser implemented in TypeScript (ESNEXT) to parse names. Intended to be used for Author lists in BibTeX references.",
-  "main": "./index.js",
-  "types": "./index.d.ts",
+  "main": "./dist/cjs/author-name-parser.js",
+  "browser": "./dist/umd/author-name-parser.js",
+  "types": "./dist/types/index.d.ts",
   "files": [
     "dist",
     "README.md",
-    "index.js",
-    "index.d.ts",
     "LICENSE"
   ],
   "scripts": {
@@ -24,14 +23,16 @@
     "test": "npm run dev && mocha --require source-map-support/register dev/author-name-parser-dev.js",
     "build-commonjs": "LIB_TYPE=commonjs webpack --config webpack.config.prod.js",
     "build-umd": "LIB_TYPE=umd webpack --config webpack.config.prod.js",
-    "build": "npm run build-umd && npm run build-commonjs",
+    "build-module": "LIB_TYPE=module webpack --config webpack.config.prod.js",
+    "build": "npm run build-umd && npm run build-commonjs && npm run build-module",
     "build-debug": "webpack --config webpack.config.prod.js --mode development --devtool source-map"
   },
   "exports": {
     ".": {
-      "require": "./index.js",
-      "import": "./index.js",
-      "types": "./index.d.ts"
+      "require": "./dist/cjs/author-name-parser.js",
+      "import": "./dist/module/author-name-parser.js",
+      "browser": "./dist/umd/author-name-parser.js",
+      "types": "./dist/types/index.d.ts"
     }
   },
   "keywords": [
@@ -54,10 +55,13 @@
     "@types/chai": "^5.2.2",
     "@types/jest": "^30.0.0",
     "@types/mocha": "^10.0.10",
+    "@types/webpack": "^5.28.5",
     "antlr4ts": "^0.5.0-alpha.4",
     "antlr4ts-cli": "^0.5.0-alpha.4",
     "assert": "^2.1.0",
     "babel-loader": "^10.0.0",
+    "buffer": "^6.0.3",
+    "chai": "^4.5.0",
     "cross-env": "^10.0.0",
     "glob": "^11.0.3",
     "license-webpack-plugin": "^4.0.2",
@@ -69,8 +73,6 @@
     "typescript": "^5.8.3",
     "webpack": "^5.94.0",
     "webpack-cli": "^4.10.0",
-    "webpack-license-plugin": "^4.5.1",
-    "buffer": "^6.0.3",
-    "chai": "^4.5.0"
+    "webpack-license-plugin": "^4.5.1"
   }
 }

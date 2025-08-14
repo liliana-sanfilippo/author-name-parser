@@ -1,29 +1,32 @@
 const path = require("path");
+const webpack = require("webpack")
 const LicensePlugin = require('webpack-license-plugin')
 
 
 let type = 'umd';
-let dir = 'dist';
-if (process.env.LIB_TYPE) {
+let dir = 'dist/umd';
+
+if (typeof process !== 'undefined' && process.env?.LIB_TYPE) {
     type = process.env.LIB_TYPE;
     if (type === 'umd') {
         dir = 'dist/umd';
     } else if (type === 'commonjs') {
         dir = 'dist/cjs';
+    } else if (type === 'module') {
+        dir = 'dist/module';
     }
 }
 
-module.exports = {
+const config = {
     mode: 'production',
     entry: './src/index.ts',
     target: 'web',
     output: {
         filename: 'author-name-parser.js',
         path: path.resolve(__dirname, dir),
-        library: {
-            name: 'AuthorNameParser',
-            type: type,
-        },
+        library: type === 'module'
+            ? { type: 'module' }
+            : { name: 'AuthorNameParser', type: type },
         environment: {
             arrowFunction: false,
         },
@@ -50,11 +53,23 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.js'],
         fallback: {
-            fs: false
+            fs: false,
+            process: require.resolve("process/browser")
         },
     },
     plugins: [
-        new LicensePlugin()
+        new LicensePlugin(),
+        new webpack.DefinePlugin({
+            "process.env.LIB_TYPE": JSON.stringify(process.env.LIB_TYPE || "umd"),
+        }),
+        new webpack.ProvidePlugin({
+            process: 'process/browser', // mockt process im Browser
+        })
     ]
 };
 
+if (type === 'module') {
+    config.experiments = { outputModule: true };
+}
+
+module.exports = config;
