@@ -2,15 +2,15 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
+    "moduleResolution": "Node",
     "declaration": true,
-    "declarationDir": "dist",
-    "esModuleInterop": true,
-    "moduleResolution": "node",
+    "declarationDir": "dist/types",
     "outDir": "dist",
-    //"rootDir": "./",
-    "strict": true,
-    // "skipLibCheck": true,
-    // "allowSyntheticDefaultImports": true
+    "rootDir": "src",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true
   },
-  "include": ["src", "umd", "cjs", "webpack.config.prod.ts", "webpack.config.dev.ts", "dist"]
+  "include": ["src",
+    "webpack.config.dev.js", "webpack.config.prod.js"],
 }
