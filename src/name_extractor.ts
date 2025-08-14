@@ -1,8 +1,8 @@
 import {ANTLRInputStream, CommonTokenStream} from "antlr4ts";
-import {AuthorsLexer} from "../base/AuthorsLexer";
-import {Authors} from "../base/Authors";
-import {ExtractVisitor} from "./extract_visitor";
-import {FullName} from "./type";
+import {AuthorsLexer} from "./base/AuthorsLexer";
+import {Authors} from "./base/Authors";
+import {ExtractVisitor} from "./core/extract_visitor";
+import {FullName} from "./core/type";
 
 function createParser(input: string): Authors {
     const inputStream = new ANTLRInputStream(input);

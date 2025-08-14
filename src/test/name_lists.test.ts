@@ -1,6 +1,6 @@
 import {expect} from "chai";
-import {extractAllNames} from "../src/core/name_extractor";
-import {FullName} from "../src/core/type";
+import {extractAllNames} from "../name_extractor";
+import {FullName} from "../core/type";
 
 
 describe('test for parsing lists of names', function () {

@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {extractLastName, extractPrenames} from "../src/core/name_extractor";
+import {extractLastName, extractPrenames} from "../name_extractor";
 
 
 
