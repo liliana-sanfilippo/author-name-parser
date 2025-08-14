@@ -21,19 +21,17 @@ Plan: to develop it into a full webpack parser.
 - [X] Recognition of selection of arabian first name particles e.g. `ibn`
 - [X] Works with multiple list seperators `,` / `;` / `and` ...
 
-### Webpack and TypeScript component 
+### Technical
 
 - [x] Browser support
 - [x] NPM support
-- [x] Typing support for TypeScript projects
-- [x] Exportable Entry Type  for TypeScript projects
-- [x] Includes inofficial type dataset
+- [x] TypeScript Support (Typing support for TypeScript projects incl. exportable "Name" Type for TypeScript projects)
 
 ### Further info
 
 - NOT case sensitive!
 
-## Quickstart
+## Installation
 
 ### NPM / YARN
 
@@ -57,7 +55,26 @@ TODO
 
 ## USAGE 
 
-TODO 
+### ESM
+
+```javascript 
+import { extractAllNames } from '@liliana-sanfilippo/author-name-parser';
+```
+
+### CommonJS
+
+```javascript
+const { extractAllNames } = require('@liliana-sanfilippo/author-name-parser');
+```
+
+### Browser (UMD)
+```html
+<script src="dist/umd/author-name-parser.js"></script>
+<script>
+  const names = AuthorNameParser.extractAllNames("Max Mustermann");
+</script>
+```
+
 
 ## Related Projects
 
