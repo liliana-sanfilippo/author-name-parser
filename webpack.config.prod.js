@@ -63,7 +63,7 @@ const config = {
             "process.env.LIB_TYPE": JSON.stringify(process.env.LIB_TYPE || "umd"),
         }),
         new webpack.ProvidePlugin({
-            process: 'process/browser', // mockt process im Browser
+            process: 'process/browser',
         })
     ]
 };
