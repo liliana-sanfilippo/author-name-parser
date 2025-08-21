@@ -29,6 +29,50 @@ Planning can be seen in the [Wiki](https://github.com/liliana-sanfilippo/author-
 
 - NOT case sensitive!
 
+## Installation
+
+### NPM / YARN
+
+```bash
+npm install @liliana-sanfilippo/author-name-parser
+```
+
+```bash
+yarn add @liliana-sanfilippo/author-name-parser
+```
+
+### In-Browser Use
+
+Include `author-name-parser.js` from [CDN](https://unpkg.com/@liliana-sanfilippo/author-name-parser/dist/umd/author-name-parser.js)
+
+## Build
+
+### For Dev
+
+Build a CommonJS script to `dist/dev/author-name-parser-dev.js` with source map.
+
+```shell
+npm run dev
+```
+
+Configuration is changeable in `.webpack.config.dev.js`.
+
+### For Test
+
+Run tests defined in `test` after building for dev.
+
+```shell
+npm run test
+```
+
+### For Production
+
+Build a UMD script to `dist/umd/author-name-parser.js` and a CommonJS script to `dist/cjs/author-name-parser.js` and a module to `dist/module/author-name-parser.js`.
+
+```shell
+npm run build
+```
+
 ## USAGE 
 
 ### ESM
