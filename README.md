@@ -6,8 +6,6 @@ Name parser for parsing author lists of bibtex references to allow for consisten
 
 Planning can be seen in the [Wiki](https://github.com/liliana-sanfilippo/author-name-parser/wiki). The wiki also contains a [troubleshooting guide](https://github.com/liliana-sanfilippo/author-name-parser/wiki/Troubleshooting) that will be expanded as errors and problems occur. 
 
-Plan: to develop it into a full webpack parser.
-
 ## Features
 
 ### Grammar
@@ -30,28 +28,6 @@ Plan: to develop it into a full webpack parser.
 ### Further info
 
 - NOT case sensitive!
-
-## Installation
-
-### NPM / YARN
-
-TODO - Package not released yet 
-
-### In-Browser Use
-
-TODO - Package not released yet 
-
-## Build
-
-Environment: TODO 
-
-### For Dev
-
-TODO 
-
-### For Production
-
-TODO 
 
 ## USAGE 
 
