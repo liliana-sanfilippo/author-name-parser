@@ -1,6 +1,6 @@
 # Bibtex Author parser
 
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen) [![publish to github](https://github.com/liliana-sanfilippo/author-name-parser/actions/workflows/publish.yml/badge.svg)](https://github.com/liliana-sanfilippo/author-name-parser/actions/workflows/publish.yml) [![publish to npm](https://github.com/liliana-sanfilippo/author-name-parser/actions/workflows/publish-npm.yml/badge.svg)](https://github.com/liliana-sanfilippo/author-name-parser/actions/workflows/publish-npm.yml)
 
 Name parser for parsing author lists of bibtex references to allow for consistent styl. Includes the ANTLRts grammar. 
 
