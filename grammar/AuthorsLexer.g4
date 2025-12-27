@@ -3,8 +3,43 @@ lexer grammar AuthorsLexer;
 SEPERATOR: ';' | '&' | 'and' | ', and' | ',and';
 ETAL: 'et al.';
 
-PARTICLE: 'van' | 'von' | 'de' | 'dos' | 'da' | 'das' | 'du' | 'dit' | 'la' | 'der' | 'zu' | 'al'
-                                                                                                 | 'el'
+PARTICLE:
+    'af'
+    | 'al'
+    | 'av'
+    | 'aw'
+    | 'd' APOSTROPHE
+    | 'da'
+    | 'das'
+    | 'de'
+    | 'de' APOSTROPHE
+    | 'dei'
+    | 'del'
+    | 'de la'
+    | 'der'
+    | 'des'
+    | 'di'
+    | 'dit'
+    | 'do'
+    | 'dos'
+    | 'du'
+    | 'el'
+    | 'és'
+    | 'es'
+    | 'la'
+    | 'na'
+    | 'til'
+    | 'thoe'
+    | 'tot'
+    | 'van'
+    | 'von'
+    | 'von dem'
+    | 'von der'
+    | 'zu'
+    | 'zum'
+    | 'zur'
+
+
                                                                                                  | 'ibn'
                                                                                                  | 'bin'
                                                                                                  | 'bint'

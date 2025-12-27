@@ -1,4 +1,4 @@
-// Generated from src/base/Authors.g4 by ANTLR 4.9.0-SNAPSHOT
+// Generated from Authors.g4 by ANTLR 4.9.0-SNAPSHOT
 
 
 import { ParseTreeListener } from "antlr4ts/tree/ParseTreeListener";
